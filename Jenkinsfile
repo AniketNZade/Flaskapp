@@ -4,12 +4,12 @@ pipeline {
     stages{
         stage("Code"){
             steps{
-                git url: "https://github.com/LondheShubham153/two-tier-flask-app.git", branch: "jenkins"
+                git url: "https://github.com/AniketNZade/Flaskapp.git", branch: "jenkins"
             }
         }
         stage("Build & Test"){
             steps{
-                sh "docker build . -t flaskapp"
+                sh "docker build . -t flask-app"
             }
         }
         stage("Push to DockerHub"){
