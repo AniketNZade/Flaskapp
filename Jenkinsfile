@@ -4,7 +4,7 @@ pipeline {
     stages{
         stage("Code"){
             steps{
-                git url: "https://github.com/AniketNZade/Flaskapp.git", branch: "jenkins"
+                git url: "https://github.com/AniketNZade/Flaskapp.git", branch: "main"
             }
         }
         stage("Build & Test"){
@@ -16,8 +16,8 @@ pipeline {
             steps{
                 withCredentials([usernamePassword(credentialsId:"dockerHub",passwordVariable:"dockerHubPass",usernameVariable:"dockerHubUser")]){
                     sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
-                    sh "docker tag flaskapp ${env.dockerHubUser}/flaskapp:latest"
-                    sh "docker push ${env.dockerHubUser}/flaskapp:latest" 
+                    sh "docker tag flaskapp ${env.dockerHubUser}/flask-app:latest"
+                    sh "docker push ${env.dockerHubUser}/flask-app:latest" 
                 }
             }
         }
