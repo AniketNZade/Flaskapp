@@ -9,7 +9,7 @@ pipeline {
         }
         stage("Build & Test"){
             steps{
-                sh "docker build . -t flask-app"
+                sh "docker build -t flask ."
             }
         }
         stage("Push to DockerHub"){
