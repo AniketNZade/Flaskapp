@@ -19,8 +19,8 @@ pipeline {
                     passwordVariable:"dockerHubPass",
                     usernameVariable:"dockerHubUser")]){
                     sh  'echo $dockerHubPass | docker login -u $dockerHubUser --password-stdin'
-                    sh "docker image tag flask-app ${env.dockerHubUser}/flask-app:latest"
-                    sh "docker push ${env.dockerHubUser}/flask-app:latest" 
+                    sh "docker image tag flask ${env.dockerHubUser}/flask:latest"
+                    sh "docker push ${env.dockerHubUser}/flask:latest" 
                 }
             }
         }
